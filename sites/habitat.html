@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HABITAT — Architecture Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#efe9e1; --ink:#1e1c1a; --muted:#77706a; --accent:#c4552d; --line:#d6cdc2; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:"DM Sans", system-ui, sans-serif; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1240px, 100% - 32px); margin-inline:auto; }
+  nav { display:flex; justify-content:space-between; align-items:center; height:86px; }
+  .brand { font-weight:700; letter-spacing:.35em; font-size:15px; }
+  nav ul { display:flex; gap:34px; list-style:none; font-size:14px; }
+  nav ul a { color:var(--muted); } nav ul a:hover { color:var(--ink); }
+  .hero { display:grid; grid-template-columns:1fr 1.15fr; gap:30px; align-items:center; min-height:calc(100vh - 86px); }
+  .serif { font-family:"Playfair Display", serif; font-weight:500; }
+  h1 { font-size:clamp(46px, 7vw, 96px); line-height:1; letter-spacing:-.02em; }
+  h1 em { color:var(--accent); }
+  .hero p { color:var(--muted); font-size:18px; line-height:1.7; margin:28px 0 36px; max-width:430px; }
+  .btn { display:inline-flex; gap:14px; align-items:center; padding:18px 30px; background:var(--ink); color:var(--bg); font-weight:500; border-radius:2px; transition:background .25s; }
+  .btn:hover { background:var(--accent); }
+  #stage { width:100%; aspect-ratio:1; max-height:78vh; cursor:grab; }
+  #stage:active { cursor:grabbing; }
+  .hint { font-size:12px; color:var(--muted); letter-spacing:.15em; text-transform:uppercase; text-align:center; margin-top:-10px; }
+  section { padding:120px 0; border-top:1px solid var(--line); }
+  .head { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-bottom:60px; align-items:end; }
+  h2 { font-size:clamp(34px, 5vw, 64px); line-height:1.05; }
+  .head p { color:var(--muted); line-height:1.7; }
+  .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .p .img { aspect-ratio:4/5; position:relative; overflow:hidden; }
+  .p .img::after { content:""; position:absolute; inset:0; background:linear-gradient(transparent 60%, rgba(0,0,0,.25)); }
+  .p h3 { margin-top:18px; font-size:22px; } .p span { color:var(--muted); font-size:14px; }
+  .shape { position:absolute; bottom:0; }
+  .services { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--ink); }
+  .s { padding:34px 24px 34px 0; } .s b { font-size:13px; color:var(--accent); } .s h4 { font-size:20px; margin:18px 0 10px; } .s p { color:var(--muted); font-size:15px; line-height:1.6; }
+  .contact { background:var(--ink); color:var(--bg); border:0; }
+  .contact h2 { max-width:900px; } .contact h2 em { color:#e58a62; }
+  .contact .row { display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; margin-top:60px; color:#b6aea5; }
+  .contact .btn { background:var(--bg); color:var(--ink); }
+  footer { padding:30px 0; font-size:13px; color:var(--muted); display:flex; justify-content:space-between; }
+  @media (max-width:880px){ nav ul { display:none; } .hero, .head { grid-template-columns:1fr; } .hero { padding:30px 0 60px; } .projects { grid-template-columns:1fr; } .services { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><div class="brand">HABITAT</div>
+    <ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+  <div class="hero">
+    <div>
+      <h1 class="serif">Spaces that<br><em>shape</em> how<br>we live.</h1>
+      <p>Habitat is an independent architecture studio designing calm, sustainable homes and public places since 2012.</p>
+      <a href="#work" class="btn">See our projects →</a>
+    </div>
+    <div><canvas id="stage"></canvas><div class="hint">Drag to rotate the model</div></div>
+  </div>
+</div>
+
+<section id="work"><div class="wrap">
+  <div class="head"><h2 class="serif">Selected<br>work</h2><p>Every project begins with the place: its light, its climate and the people who will live there. Here are a few of our favourites.</p></div>
+  <div class="projects">
+    <div class="p"><div class="img" style="background:linear-gradient(#cfd8dc,#e8e2d8)"><div class="shape" style="left:15%;width:70%;height:55%;background:#f7f3ee;box-shadow:inset -40px 0 0 #e2dad0"></div><div class="shape" style="left:25%;width:30%;height:22%;background:#2b2826"></div></div><h3 class="serif">Cliff House</h3><span>Residential · Portugal · 2025</span></div>
+    <div class="p"><div class="img" style="background:linear-gradient(#e9c9a8,#f1e4d6)"><div class="shape" style="left:10%;width:35%;height:75%;background:#c4552d"></div><div class="shape" style="left:45%;width:45%;height:50%;background:#e8dfd4"></div></div><h3 class="serif">Terra Library</h3><span>Public · Lviv · 2024</span></div>
+    <div class="p"><div class="img" style="background:linear-gradient(#bfcfc4,#e6e9df)"><div class="shape" style="left:20%;width:60%;height:40%;background:#6f7d68"></div><div class="shape" style="left:20%;bottom:40%;width:60%;height:4%;background:#2b2826"></div></div><h3 class="serif">Forest Pavilion</h3><span>Cultural · Carpathians · 2023</span></div>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <div class="head"><h2 class="serif">What we do</h2><p>From the first sketch to the final detail, we guide you through every stage.</p></div>
+  <div class="services">
+    <div class="s"><b>01</b><h4>Architecture</h4><p>Private houses, villas and public buildings.</p></div>
+    <div class="s"><b>02</b><h4>Interiors</h4><p>Furniture, materials and light, designed together.</p></div>
+    <div class="s"><b>03</b><h4>Landscape</h4><p>Gardens and courtyards that grow with you.</p></div>
+    <div class="s"><b>04</b><h4>3D Visualisation</h4><p>See your home before the first brick is laid.</p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2 class="serif">Let's design your <em>next place</em> together.</h2>
+  <div class="row"><span>hello@habitat.studio<br>+1 (555) 014 2290</span><a href="#" class="btn">Start a project →</a></div>
+</div></section>
+<div class="wrap"><footer><span>© Habitat Studio</span><span>Lisbon · Kyiv</span></footer></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  const canvas = document.getElementById('stage');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-8, 8, 8, -8, .1, 100);
+  camera.position.set(14, 12, 14); camera.lookAt(0, 1, 0);
+
+  const sun = new THREE.DirectionalLight(0xfff4e6, 1.1);
+  sun.position.set(8, 14, 4); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left:-10, right:10, top:10, bottom:-10 });
+  scene.add(sun, new THREE.HemisphereLight(0xffffff, 0xd8cbbb, .65));
+
+  const world = new THREE.Group(); scene.add(world);
+  const M = c => new THREE.MeshStandardMaterial({ color:c, roughness:.85 });
+  function box(w, h, d, x, y, z, color) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(color));
+    m.position.set(x, y + h / 2, z); m.castShadow = m.receiveShadow = true; world.add(m); return m;
+  }
+
+  // Site
+  box(12, .4, 12, 0, -.4, 0, 0xe4dcd1);
+  box(5, .05, 3, 2.5, 0, 3.5, 0x8fb3c4);          // pool
+  box(12, .02, 1.2, 0, 0, -5.2, 0xcfc4b6);        // path
+  // House: stacked volumes
+  box(7, 2.2, 4, -1.5, 0, -1, 0xf7f3ee);
+  box(5, 2, 4.2, .5, 2.2, -.4, 0xf2ece4);
+  box(2.4, 4.2, 2.4, -4.2, 0, 2.2, 0xc4552d);
+  box(5.2, .15, 4.6, .5, 4.2, -.4, 0x2b2826);     // roof slab
+  box(7.2, .15, 4.2, -1.5, 2.2, -1, 0x2b2826);
+  // Glass
+  const glass = new THREE.MeshStandardMaterial({ color:0x9ab4c0, metalness:.3, roughness:.1, transparent:true, opacity:.7 });
+  [[ -1.5, 1.1, 1.01, 5, 1.6 ], [ .5, 3.2, 1.71, 4, 1.4 ]].forEach(([x, y, z, w, h]) => {
+    const g = new THREE.Mesh(new THREE.PlaneGeometry(w, h), glass); g.position.set(x, y, z); world.add(g);
+  });
+  // Trees
+  for (let i = 0; i < 9; i++) {
+    const a = i / 9 * Math.PI * 2, r = 4.8 + (i % 2) * .6, x = Math.cos(a) * r, z = Math.sin(a) * r;
+    if (Math.abs(x) < 4 && z > 1.5 && z < 5) continue;
+    box(.15, .7, .15, x, 0, z, 0x6b5745);
+    const crown = new THREE.Mesh(new THREE.IcosahedronGeometry(.6 + Math.random() * .3, 0), M(i % 3 ? 0x7c8f6a : 0x9aa77f));
+    crown.position.set(x, 1.2, z); crown.castShadow = true; world.add(crown);
+  }
+
+  // Drag to rotate
+  let drag = false, lastX = 0, vel = .003, rot = .6;
+  canvas.addEventListener('pointerdown', e => { drag = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove', e => { if (!drag) return; vel = (e.clientX - lastX) * .006; rot += vel; lastX = e.clientX; });
+  canvas.addEventListener('pointerup', () => drag = false);
+
+  function resize() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    const a = w / h; camera.left = -8 * a; camera.right = 8 * a; camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(canvas);
+
+  (function loop() {
+    if (!drag) { vel += (.003 - vel) * .03; rot += vel; }
+    world.rotation.y = rot;
+    renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  })();
+</script>
+<script>
+  // Режим прев'ю для портфоліо: ?preview — сторінка сама плавно прокручується вниз і назад
+  if (/[?&]preview/.test(location.search)) {
+    const st = document.createElement('style');
+    st.textContent = 'html{scroll-behavior:auto!important;scrollbar-width:none}::-webkit-scrollbar{display:none}';
+    document.head.appendChild(st);
+    const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const PAUSE = 1800, MOVE = 9000, start = performance.now();
+    (function tick(now) {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const cycle = 2 * (PAUSE + MOVE), t = (now - start) % cycle;
+      let p = 0;
+      if (t < PAUSE) p = 0;
+      else if (t < PAUSE + MOVE) p = ease((t - PAUSE) / MOVE);
+      else if (t < 2 * PAUSE + MOVE) p = 1;
+      else p = 1 - ease((t - 2 * PAUSE - MOVE) / MOVE);
+      scrollTo(0, p * max);
+      requestAnimationFrame(tick);
+    })(start);
+  }
+</script>
+</body>
+</html>

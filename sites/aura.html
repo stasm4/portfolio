@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURA — Wireless Headphones</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0b0b12; --text:#f3f1ff; --muted:#a19dbb; --a1:#8b5cf6; --a2:#ec4899; --a3:#22d3ee; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:"Space Grotesk", system-ui, sans-serif; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  #scene { position:fixed; inset:0; width:100%; height:100%; z-index:0; }
+  .wrap { width:min(1180px, 100% - 32px); margin-inline:auto; position:relative; z-index:2; }
+  nav { display:flex; justify-content:space-between; align-items:center; height:80px; }
+  .brand { font-weight:700; font-size:22px; letter-spacing:.3em; }
+  nav ul { display:flex; gap:32px; list-style:none; font-size:14px; color:var(--muted); }
+  nav ul a:hover { color:var(--text); }
+  .pill { padding:12px 22px; border-radius:40px; background:var(--text); color:var(--bg); font-weight:700; font-size:14px; }
+  .hero { min-height:calc(100vh - 80px); display:flex; flex-direction:column; justify-content:center; max-width:620px; }
+  .tag { display:inline-block; font-size:12px; letter-spacing:.25em; text-transform:uppercase; color:var(--a3); margin-bottom:20px; }
+  h1 { font-size:clamp(48px, 8vw, 104px); line-height:.95; font-weight:700; letter-spacing:-.03em; }
+  h1 span { background:linear-gradient(90deg, var(--a1), var(--a2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p { color:var(--muted); font-size:18px; margin:26px 0 36px; max-width:460px; line-height:1.6; }
+  .row { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .btn { padding:18px 32px; border-radius:40px; font-weight:700; background:linear-gradient(90deg, var(--a1), var(--a2)); box-shadow:0 10px 40px rgba(139,92,246,.4); }
+  .price { font-size:28px; font-weight:700; } .price s { font-size:16px; color:var(--muted); margin-left:6px; }
+  section { padding:120px 0; }
+  .glass { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(14px); border-radius:24px; }
+  .features { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .feat { padding:34px; }
+  .feat b { font-size:44px; display:block; background:linear-gradient(90deg, var(--a3), var(--a1)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .feat h3 { margin:10px 0 8px; } .feat p { color:var(--muted); line-height:1.6; font-size:15px; }
+  h2 { font-size:clamp(34px,5vw,60px); letter-spacing:-.02em; margin-bottom:50px; max-width:700px; line-height:1.05; }
+  .colors { display:flex; gap:18px; flex-wrap:wrap; }
+  .sw { flex:1; min-width:160px; padding:26px; cursor:pointer; transition:transform .25s; }
+  .sw:hover, .sw.on { transform:translateY(-6px); border-color:rgba(255,255,255,.35); }
+  .sw i { display:block; width:46px; height:46px; border-radius:50%; margin-bottom:16px; }
+  .cta { text-align:center; padding:80px 30px; }
+  .cta h2 { margin-inline:auto; }
+  footer { padding:40px 0; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  @media (max-width:800px){ nav ul { display:none; } .features { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div class="wrap">
+  <nav>
+    <div class="brand">AURA</div>
+    <ul><li><a href="#tech">Technology</a></li><li><a href="#colors">Colors</a></li><li><a href="#buy">Buy</a></li></ul>
+    <a href="#buy" class="pill">Pre-order</a>
+  </nav>
+  <div class="hero">
+    <span class="tag">New · Aura One</span>
+    <h1>Sound you can <span>feel.</span></h1>
+    <p>Spatial audio, adaptive noise cancelling and 60 hours of battery — wrapped in a design that floats.</p>
+    <div class="row"><a href="#buy" class="btn">Pre-order now</a><div class="price">$249<s>$299</s></div></div>
+  </div>
+</div>
+
+<section id="tech"><div class="wrap">
+  <h2>Engineered for the way you listen.</h2>
+  <div class="features">
+    <div class="feat glass"><b>60h</b><h3>All-day battery</h3><p>Full charge in 40 minutes. 5 minutes gives you 4 hours of music.</p></div>
+    <div class="feat glass"><b>-42dB</b><h3>Adaptive ANC</h3><p>Eight microphones read the room and silence it in real time.</p></div>
+    <div class="feat glass"><b>360°</b><h3>Spatial audio</h3><p>Head tracking places every instrument exactly where it belongs.</p></div>
+  </div>
+</div></section>
+
+<section id="colors"><div class="wrap">
+  <h2>Pick your vibe.</h2>
+  <div class="colors" id="sw">
+    <div class="sw glass on" data-c="8b5cf6,ec4899"><i style="background:linear-gradient(135deg,#8b5cf6,#ec4899)"></i><b>Nebula</b></div>
+    <div class="sw glass" data-c="22d3ee,3b82f6"><i style="background:linear-gradient(135deg,#22d3ee,#3b82f6)"></i><b>Glacier</b></div>
+    <div class="sw glass" data-c="f59e0b,ef4444"><i style="background:linear-gradient(135deg,#f59e0b,#ef4444)"></i><b>Sunset</b></div>
+    <div class="sw glass" data-c="e5e7eb,9ca3af"><i style="background:linear-gradient(135deg,#f3f4f6,#9ca3af)"></i><b>Pearl</b></div>
+  </div>
+</div></section>
+
+<section id="buy"><div class="wrap">
+  <div class="cta glass">
+    <span class="tag">Limited first batch</span>
+    <h2>Get Aura One before everyone else.</h2>
+    <a href="#" class="btn">Reserve for $249</a>
+  </div>
+  <footer><span>© AURA Audio</span><span>Free shipping · 2-year warranty</span></footer>
+</div></section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  const canvas = document.getElementById('scene');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, .1, 100);
+  camera.position.z = 9;
+
+  scene.add(new THREE.AmbientLight(0xffffff, .35));
+  const l1 = new THREE.PointLight(0x8b5cf6, 2.2, 30); l1.position.set(5, 3, 5); scene.add(l1);
+  const l2 = new THREE.PointLight(0xec4899, 2.2, 30); l2.position.set(-5, -3, 4); scene.add(l2);
+  const l3 = new THREE.DirectionalLight(0xffffff, .6); l3.position.set(0, 5, 5); scene.add(l3);
+
+  const mat = new THREE.MeshStandardMaterial({ color:0xffffff, metalness:.7, roughness:.18 });
+  const group = new THREE.Group(); scene.add(group);
+
+  // Headphones built from primitives
+  const band = new THREE.Mesh(new THREE.TorusGeometry(1.6, .14, 32, 100, Math.PI), mat);
+  band.position.y = .3; group.add(band);
+  [-1, 1].forEach(s => {
+    const cup = new THREE.Mesh(new THREE.CylinderGeometry(.75, .75, .5, 64), mat);
+    cup.rotation.z = Math.PI / 2; cup.position.set(1.6 * s, -.3, 0); group.add(cup);
+    const pad = new THREE.Mesh(new THREE.TorusGeometry(.6, .18, 24, 64),
+      new THREE.MeshStandardMaterial({ color:0x18151f, roughness:.9 }));
+    pad.rotation.y = Math.PI / 2; pad.position.set(1.32 * s, -.3, 0); group.add(pad);
+  });
+
+  // Floating orbs
+  const orbs = [];
+  for (let i = 0; i < 14; i++) {
+    const m = new THREE.Mesh(new THREE.IcosahedronGeometry(Math.random() * .25 + .08, 2), mat);
+    m.position.set((Math.random() - .5) * 10, (Math.random() - .5) * 7, (Math.random() - .5) * 4 - 1);
+    m.userData.s = Math.random() * 2 + .5; orbs.push(m); scene.add(m);
+  }
+
+  let mx = 0, my = 0, scrollY0 = 0;
+  addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+  addEventListener('scroll', () => scrollY0 = scrollY);
+
+  function resize() {
+    const w = innerWidth, h = innerHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    group.position.x = w > 800 ? 2.6 : 0; group.position.y = w > 800 ? 0 : -1.6;
+    group.scale.setScalar(w > 800 ? 1 : .7);
+  }
+  addEventListener('resize', resize); resize();
+
+  document.getElementById('sw').addEventListener('click', e => {
+    const el = e.target.closest('.sw'); if (!el) return;
+    document.querySelectorAll('.sw').forEach(s => s.classList.toggle('on', s === el));
+    const [a, b] = el.dataset.c.split(',');
+    l1.color.set('#' + a); l2.color.set('#' + b);
+  });
+
+  const clock = new THREE.Clock();
+  (function loop() {
+    const t = clock.getElapsedTime();
+    group.rotation.y = t * .4 + mx * .8 + scrollY0 * .003;
+    group.rotation.x = Math.sin(t * .6) * .15 + my * .4;
+    orbs.forEach((o, i) => { o.position.y += Math.sin(t * o.userData.s + i) * .003; o.rotation.x = t * o.userData.s; });
+    camera.position.y = -scrollY0 * .002;
+    renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  })();
+</script>
+<script>
+  // Режим прев'ю для портфоліо: ?preview — сторінка сама плавно прокручується вниз і назад
+  if (/[?&]preview/.test(location.search)) {
+    const st = document.createElement('style');
+    st.textContent = 'html{scroll-behavior:auto!important;scrollbar-width:none}::-webkit-scrollbar{display:none}';
+    document.head.appendChild(st);
+    const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const PAUSE = 1800, MOVE = 9000, start = performance.now();
+    (function tick(now) {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const cycle = 2 * (PAUSE + MOVE), t = (now - start) % cycle;
+      let p = 0;
+      if (t < PAUSE) p = 0;
+      else if (t < PAUSE + MOVE) p = ease((t - PAUSE) / MOVE);
+      else if (t < 2 * PAUSE + MOVE) p = 1;
+      else p = 1 - ease((t - 2 * PAUSE - MOVE) / MOVE);
+      scrollTo(0, p * max);
+      requestAnimationFrame(tick);
+    })(start);
+  }
+</script>
+</body>
+</html>
