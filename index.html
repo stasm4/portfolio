@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Станіслав — Створення сайтів</title>
+<meta name="theme-color" content="#0d0b12">
 <meta name="description" content="Портфоліо веб-дизайнера: 3D-сайти, лендінги, сайти компаній. 3 роки на ринку, найдоступніші ціни.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,7 +101,8 @@
   .about { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; }
   .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .stat { padding: 26px 20px; border-radius: var(--radius); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-  .stat b { display: block; font-size: 38px; line-height: 1; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat small { display: block; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .stat b { display: block; font-size: 38px; line-height: 1; white-space: nowrap; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .stat span { display: block; margin-top: 10px; font-size: 13px; color: var(--muted); }
   .about p { color: var(--muted); margin-top: 6px; }
   .about p .hl { color: var(--orange); }
@@ -142,7 +144,18 @@
     section { padding: 76px 0; }
     .reviews { grid-template-columns: 1fr; }
     .nav .btn { display: none; }
-    .stat b { font-size: 30px; }
+    /* Телефон: шапка не висить поверх сторінки, а прокручується разом з першим екраном */
+    header { position: absolute; }
+    header.scrolled { background: none; backdrop-filter: none; }
+    .nav { height: 68px; }
+    .logo-badge { width: 36px; height: 36px; font-size: 16px; }
+    .logo-text { font-size: 19px; }
+    /* Цифри — рядками: число зліва, підпис справа */
+    .stats { grid-template-columns: 1fr; gap: 10px; }
+    .stat { display: grid; grid-template-columns: 130px 1fr; align-items: center; column-gap: 14px; padding: 16px 18px; }
+    .stat small { grid-column: 1; margin-bottom: 2px; }
+    .stat b { grid-column: 1; font-size: 30px; }
+    .stat span { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; font-size: 14px; }
   }
 </style>
 </head>
@@ -208,9 +221,9 @@
       <p>Уже 3 роки роблю сайти для підприємців і компаній: дизайн, 3D-анімації, адаптив під телефони, підключення домену. Ви отримуєте готовий результат за <span class="hl">найдоступнішою ціною</span>.</p>
     </div>
     <div class="stats reveal">
-      <div class="stat"><b>3</b><span>роки на ринку</span></div>
-      <div class="stat"><b>5★</b><span>тільки хороші відгуки</span></div>
-      <div class="stat"><b>від 2 500 ₴</b><span>вартість сайту</span></div>
+      <div class="stat"><small>вже</small><b>3</b><span>роки на ринку</span></div>
+      <div class="stat"><small>рейтинг</small><b>5★</b><span>тільки хороші відгуки</span></div>
+      <div class="stat"><small>від</small><b>2 500 ₴</b><span>вартість сайту</span></div>
     </div>
   </div>
 </section>
